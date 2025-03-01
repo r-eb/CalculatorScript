@@ -1,0 +1,383 @@
+local answerFunction = game:GetService('ReplicatedStorage').Answer
+
+local buttonsBg = script.Parent.ButtonsBackground
+
+--// Number buttons
+
+local one = buttonsBg.One
+local two = buttonsBg.Two
+local three = buttonsBg.Three
+local four = buttonsBg.Four
+local five = buttonsBg.Five
+local six = buttonsBg.Six
+local seven = buttonsBg.Seven
+local eight = buttonsBg.Eight
+local nine = buttonsBg.Nine
+local zero = buttonsBg.Zero
+
+local decimal = buttonsBg.Decimal
+
+
+--// Equation/Other buttons
+
+local add = buttonsBg.Add
+local subtract = buttonsBg.Subtract
+local multiply = buttonsBg.Multiply
+local divide = buttonsBg.Divide
+
+local square = buttonsBg.Square
+local sqrt = buttonsBg.SquareRoot
+
+local openBracket = buttonsBg.OpenBracket
+local closeBracket = buttonsBg.CloseBracket
+
+local prevAns = buttonsBg.PreviousAnswer
+local toFraction = buttonsBg.ToFraction
+
+local equals = buttonsBg.Equals
+local clear = buttonsBg.Clear
+
+
+--// Equation text
+
+local equationText = script.Parent.EquationBackground.Numbers
+
+
+
+--// Equation variables
+
+local equation = ""
+local currentNum = ""
+
+local onNum = true
+local firstNum = false
+local sumShown = false
+
+local inDecimal = true
+
+local previousAnswer = 1
+
+
+--// Button Functions
+
+
+one.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."1"
+	equation = equation.."1"
+
+	equationText.Text = equation
+end)
+
+
+two.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."2"
+	equation = equation.."2"
+
+	equationText.Text = equation
+end)
+
+
+three.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."3"
+	equation = equation.."3"
+
+	equationText.Text = equation
+end)
+
+
+four.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."4"
+	equation = equation.."4"
+
+	equationText.Text = equation
+
+
+end)
+
+
+five.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."5"
+	equation = equation.."5"
+
+	equationText.Text = equation
+end)
+
+
+six.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."6"
+	equation = equation.."6"
+
+	equationText.Text = equation
+end)
+
+
+seven.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."7"
+	equation = equation.."7"
+
+	equationText.Text = equation
+end)
+
+
+eight.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."8"
+	equation = equation.."8"
+
+	equationText.Text = equation
+end)
+
+
+nine.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."9"
+	equation = equation.."9"
+
+	equationText.Text = equation
+end)
+
+
+zero.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."0"
+	equation = equation.."0"
+
+	equationText.Text = equation
+end)
+
+
+decimal.MouseButton1Click:Connect(function()
+	if not onNum then onNum = true end
+	if sumShown then return end
+
+	currentNum = currentNum.."."
+	equation = equation.."."
+
+	equationText.Text = equation
+end)
+
+
+
+--// Operator/Other Functions
+
+-- Add
+
+add.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+
+	equation = equation.."+"
+
+	equationText.Text = equation
+
+	currentNum = ""
+end)
+
+
+-- Subtract
+
+subtract.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+	
+	equation = equation.."-"
+
+	equationText.Text = equation
+
+	currentNum = ""
+end)
+
+
+-- Multiply
+
+multiply.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+
+	equation = equation.."*"
+
+	equationText.Text = equation
+
+	currentNum = ""
+end)
+
+
+-- Divide
+
+divide.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+
+	equation = equation.."/"
+
+	equationText.Text = equation
+
+	currentNum = ""
+end)
+
+
+-- Square
+
+square.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+
+	equation = equation.."^"
+
+	equationText.Text = equation
+
+	currentNum = ""
+end)
+
+
+-- Square root
+
+sqrt.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+
+	onNum = false
+
+	equation = equation.."^0.5"
+
+	equationText.Text = equation
+
+	currentNum = ""
+	
+	onNum = true
+end)
+
+
+-- Open Bracket
+
+openBracket.MouseButton1Click:Connect(function()
+	if sumShown then return end
+	
+	equation = equation.."("
+	
+	equationText.Text = equation
+end)
+
+
+-- Close Bracket
+
+closeBracket.MouseButton1Click:Connect(function()
+	if sumShown then return end
+
+	equation = equation..")"
+
+	equationText.Text = equation
+end)
+
+
+-- Previous answer
+
+prevAns.MouseButton1Click:Connect(function()
+	if not onNum then return end
+	if sumShown then return end
+	
+	currentNum = currentNum..previousAnswer
+	equation = equation..previousAnswer
+	
+	equationText.Text = equation
+end)
+
+
+
+--// Clear Function
+
+clear.MouseButton1Click:Connect(function()
+	equation = ""
+	currentNum = ""
+
+	equationText.Text = "0"
+
+	equationText.TextXAlignment = Enum.TextXAlignment.Left
+
+	sumShown = false
+end)
+
+
+--// Equals function
+
+equals.MouseButton1Click:Connect(function()
+	if sumShown then return end
+
+	sumShown = true
+
+	local stringAnswer = answerFunction:InvokeServer(equation)
+	answer = tostring(stringAnswer)
+
+	task.wait()
+
+	equationText.TextXAlignment = Enum.TextXAlignment.Right
+
+	equationText.Text = answer
+	
+	previousAnswer = tonumber(answer)
+	
+	
+end)
+
+
+toFraction.MouseButton1Click:Connect(function()
+	if not sumShown then return end
+	print(answer)
+
+	local answer = answer
+
+	if inDecimal then
+		if string.len(tostring(answer)) == 1 then
+			equationText.Text = tostring(answer).."/1"
+		elseif string.len(tostring(answer)) == 2 then
+			equationText.Text = tostring(answer*10).."/10"
+		elseif string.len(tostring(answer)) == 3 then
+			equationText.Text = tostring(answer*100).."/100"
+		else
+			equationText.Text = tostring(answer*1000).."/1000"
+		end
+
+		inDecimal = false
+	else
+		equationText.Text = answer
+		inDecimal = true
+	end
+
+end)
