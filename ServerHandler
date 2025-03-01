@@ -1,0 +1,19 @@
+local answer = game:GetService('ReplicatedStorage').Answer
+
+local http = game:GetService('HttpService')
+
+local url = 'http://api.mathjs.org/v4/?expr='
+
+
+answer.OnServerInvoke = function(plr, equation)
+	
+	local success, response = pcall(function()
+		return http:GetAsync(url..http:UrlEncode(equation))
+	end)
+	
+	if not success then
+		response = 'Invalid equation'
+	end
+	
+	return response
+end
